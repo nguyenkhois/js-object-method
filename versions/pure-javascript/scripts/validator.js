@@ -1,5 +1,5 @@
 const FormValidator = {
-    //This is an object and its items are arrays
+    //This is an object and its items are many arrays
     //validators: {[array1],[array2],[array3],...}
     validators: {},
 
@@ -26,28 +26,23 @@ const FormValidator = {
         // returnera listan av felmeddelanden.
 
         let validationResult = [];
+        let validatorsMapping = this.validatorsMapping;//Get VALIDATORS mapping
 
-        //Get VALIDATORS mapping
-        let validatorsMapping = this.validatorsMapping;
-
-        //Do not use data mapping
-        console.log("Begin process in validate() function...");
-        validatorsMapping.forEach((item,key)=>{
-            let itemValue = document.getElementById(key).value;
-            if (this.assignToValidator(item,itemValue))
-                console.log(true,key,itemValue,item); //Testing purpose (true,elementId,elementValue,validatorName)
+        console.log("Begin process in .validate() method...");//Testing purpose
+        validatorsMapping.forEach((validatorName,elementId)=>{
+            let elementValue = document.getElementById(elementId).value;
+            if (this.assignToValidator(validatorName,elementValue))
+                console.log(true,elementId,elementValue,validatorName); //Testing purpose
             else{
-                console.log(false,key,itemValue,item); //Testing purpose
-                //validationResult += `<p>${data.get(key)} is not valid</p>`;//Create error messages
+                console.log(false,elementId,elementValue,validatorName); //Testing purpose
                 let objResult = {
-                    validator: item,
-                    elementId: key,
-                    elementName: data.get(key)
+                    validator: validatorName,
+                    elementId: elementId,
+                    elementName: data.get(elementId)
                 };
                 validationResult.push(objResult);
             }
         });
-
         return validationResult
     },
 
