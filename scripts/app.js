@@ -14,7 +14,7 @@
     const currentValidators = FormValidator.getValidators() || [];
     console.log("Current validators",currentValidators); //get all current validator names
 
-    //Create validator mapping -(HTML element - VALIDATOR)
+    //Create validator mapping -(HTML elementId - VALIDATOR)
     const mapping = new Map();
     mapping.set('productId','isNumber0OrBiggerThan0');
     mapping.set('productName','isStringNotNull');
@@ -22,7 +22,7 @@
     mapping.set('stockStatus','isStringNotNull');
     FormValidator.prepare(mapping);
 
-    //Create data mapping - (HTML element Id - Element name)
+    //Create data mapping - (HTML elementId - Element name)
     const data = new Map();
     data.set('productId','Product Id');
     data.set('productName','Product name');
