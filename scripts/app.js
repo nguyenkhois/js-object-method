@@ -16,17 +16,16 @@ $(document).ready(function(){
     console.log("Current validators",currentValidators); //get all current validator names
 
     //Create validator mapping
-    //(HTML element - VALIDATOR)
+    //(HTML elementId - VALIDATOR)
     const mapping = new Map();
     mapping.set('productId','isNumber0OrBiggerThan0');
     mapping.set('productName','isStringNotNull');
     mapping.set('productPrice','isNumberBiggerThan0');
     mapping.set('stockStatus','isStringNotNull');
     FormValidator.prepare(mapping);
-    //console.log(mapping);
 
     //Create data mapping
-    //(HTML element Id - Element name)
+    //(HTML elementId - Element name)
     const data = new Map();
     data.set('productId','Product Id');
     data.set('productName','Product name');
@@ -34,16 +33,15 @@ $(document).ready(function(){
     data.set('stockStatus','Stock status');
 
     //MAIN
-    $("#btnAddProduct").click(function () {
-        //Clear all data before validation
-        $("#dspMessage").html("");
+    let dspMessage = $("#dspMessage");
+    let btnAddProduct = $("#btnAddProduct");
+    btnAddProduct.click(function () {
+        dspMessage.html("");//Clear all data before validation
 
         let errorMessages = FormValidator.validate(data);
-        //console.log(errorMessages);
-
         if (errorMessages.length > 0)
-            $("#dspMessage").html(errorMessages).attr("style","color:red");
+            dspMessage.html(errorMessages).attr("style","color:red");
         else
-            $("#dspMessage").html("Everything is ok now!").attr("style","color:green");
+            dspMessage.html("Everything is ok now!").attr("style","color:green");
     });
 });
