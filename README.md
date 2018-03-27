@@ -6,7 +6,7 @@ Example for using object method
     * [Online demo](https://nguyenkhois.github.io/js-object-method/other-versions/pure-javascript/views/index.html)
     * [View source on `pure-js` branch](https://github.com/nguyenkhois/js-object-method/tree/pure-js)
 * jQuery version    
-    * [Online demo for jQuery version](https://nguyenkhois.github.io/js-object-method/views/index.html)
+    * [Online demo](https://nguyenkhois.github.io/js-object-method/views/index.html)
     * View source on `master branch`
 
 ## Using
