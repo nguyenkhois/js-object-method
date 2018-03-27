@@ -1,4 +1,4 @@
-# js-object-method
+# JavaScript - Object method
 Example for using object method
 
 * [Online demo](https://nguyenkhois.github.io/js-object-method/views/index.html)
