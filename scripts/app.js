@@ -1,5 +1,4 @@
 //App.js
-$(document).ready(function(){
     //CREATE VALIDATORS into an object - validators:{} and predefine the functions for these validators. We have 2 arguments for every validator input)
     FormValidator.addValidator('isNumberBiggerThan0',(validatorCurrentValue) => {
         return (parseInt(validatorCurrentValue) > 0);
@@ -15,18 +14,15 @@ $(document).ready(function(){
     const currentValidators = FormValidator.getValidators() || [];
     console.log("Current validators",currentValidators); //get all current validator names
 
-    //Create validator mapping
-    //(HTML element - VALIDATOR)
+    //Create validator mapping -(HTML element - VALIDATOR)
     const mapping = new Map();
     mapping.set('productId','isNumber0OrBiggerThan0');
     mapping.set('productName','isStringNotNull');
     mapping.set('productPrice','isNumberBiggerThan0');
     mapping.set('stockStatus','isStringNotNull');
     FormValidator.prepare(mapping);
-    //console.log(mapping);
 
-    //Create data mapping
-    //(HTML element Id - Element name)
+    //Create data mapping - (HTML element Id - Element name)
     const data = new Map();
     data.set('productId','Product Id');
     data.set('productName','Product name');
@@ -34,16 +30,21 @@ $(document).ready(function(){
     data.set('stockStatus','Stock status');
 
     //MAIN
-    $("#btnAddProduct").click(function () {
-        //Clear all data before validation
-        $("#dspMessage").html("");
+    let dspMessages = document.getElementById("dspMessages");
+    let btnAddProduct = document.getElementById("btnAddProduct");
+    btnAddProduct.addEventListener("click",function () {
+        //Clear all data before display messages
+        dspMessages.innerHTML = "";
 
-        let errorMessages = FormValidator.validate(data);
-        //console.log(errorMessages);
-
-        if (errorMessages.length > 0)
-            $("#dspMessage").html(errorMessages).attr("style","color:red");
-        else
-            $("#dspMessage").html("Everything is ok now!").attr("style","color:green");
+        let error = FormValidator.validate(data);
+        if (error.length > 0){
+            error.forEach(objError=>{
+                let message = document.createElement("p");
+                message.innerHTML = `${objError.elementName} is not valid`;
+                dspMessages.appendChild(message).style.color = "#ff0000";
+            });
+        }else{
+            dspMessages.innerHTML = "Everything is ok now!";
+            dspMessages.style.color = "#00a304";
+        }
     });
-});
