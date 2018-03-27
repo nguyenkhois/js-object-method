@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Väl Godkänd</title>
+</head>
+<body>
+
+    <!-- HTML för att implementera krav F -->
+    <form action="#">
+        <label for="productId">Id</label>
+        <input type="number" id="productId" value="0" max="9999"><br>
+
+        <label for="productName">Name</label>
+        <input type="text" id="productName" required><br>
+
+        <label for="productPrice">Price</label>
+        <input type="number" id="productPrice" value="0" required><br>
+
+        <label for="stockStatus">Status</label>
+        <select name="stock" id="stockStatus">
+            <option value="">-----Select-----</option>
+            <option value="OUT_OF_STOCK">OUT_OF_STOCK</option>
+            <option value="IN_STOCK" selected>IN_STOCK</option>
+            <option value="DELIVERY_PENDING">DELIVERY_PENDING</option>
+        </select><br>
+
+        <button id="btnAddProduct" type="button">Add product</button>
+    </form>
+    <p>
+        <u>Note</u>: <br>
+        Product Id is 0 to 9999 <br>
+        Product name is not null <br>
+        Product price is bigger than 0 <br>
+        Stock status is not null
+    </p>
+    <p id="dspMessage"></p>
+
+    <!-- Scripts -->
+    <script src="../external-libraries/jquery-3.3.1.min.js"></script>
+    <script src="../scripts/validator.js"></script>
+    <script src="../scripts/app.js"></script>
+    <!--<script src="../scripts/tips.js"></script>-->
+</body>
+</html>
