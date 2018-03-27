@@ -25,7 +25,7 @@ const FormValidator = {
         //
         // returnera listan av felmeddelanden.
 
-        let validationResult = true;
+        let validationResult = "";
 
         //Get VALIDATORS mapping
         let validatorsMapping = this.validatorsMapping;
@@ -37,9 +37,9 @@ const FormValidator = {
                 console.log(true,key,$("#"+key).val(),item); //Testing purpose
             else{
                 console.log(false,key,$("#"+key).val(),item); //Testing purpose
-                validationResult = false;
-                //Display error messages
-                $("#dspMessage").append($("<p>").text(data.get(key) + " is not valid"));
+
+                //Create error messages
+                validationResult += `<p>${data.get(key)} is not valid</p>`;
             }
         });
 
