@@ -25,17 +25,22 @@ const FormValidator = {
         //
         // returnera listan av felmeddelanden.
 
-        let validationResult = "";
+        let validationResult = [];
         let validatorsMapping = this.validatorsMapping;//Get VALIDATORS mapping
 
         console.log("Begin process in validate() function...");//Testing purpose
         validatorsMapping.forEach((validatorName,elementId)=>{
             let elementValue = $("#"+elementId).val();
             if (this.assignToValidator(validatorName,elementValue))
-                console.log(true,elementId,elementValue,item); //Testing purpose
+                console.log(true,elementId,elementValue,validatorName); //Testing purpose
             else{
-                console.log(false,elementId,elementValue,item); //Testing purpose
-                validationResult += `<p>${data.get(elementId)} is not valid</p>`;//Create error messages
+                console.log(false,elementId,elementValue,validatorName); //Testing purpose
+                let objResult = {
+                    validator: validatorName,
+                    elementId: elementId,
+                    elementName: data.get(elementId)
+                };
+                validationResult.push(objResult);
             }
         });
         return validationResult

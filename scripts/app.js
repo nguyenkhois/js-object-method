@@ -38,10 +38,14 @@ $(document).ready(function(){
     btnAddProduct.click(function () {
         dspMessage.html("");//Clear all data before validation
 
-        let errorMessages = FormValidator.validate(data);
-        if (errorMessages.length > 0)
-            dspMessage.html(errorMessages).attr("style","color:red");
-        else
+        let error = FormValidator.validate(data);
+        if (error.length > 0){
+            error.forEach(objError=>{
+                console.log(objError.elementName);
+                dspMessage.append("<p>" + objError.elementName + " is not valid</p>");
+            });
+            dspMessage.attr("style","color:red");
+        }else
             dspMessage.html("Everything is ok now!").attr("style","color:green");
     });
 });
