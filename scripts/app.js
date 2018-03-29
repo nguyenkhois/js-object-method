@@ -41,8 +41,8 @@ $(document).ready(function(){
         let error = FormValidator.validate(data);
         if (error.length > 0){
             error.forEach(objError=>{
-                console.log(objError.elementName);
-                dspMessage.append("<p>" + objError.elementName + " is not valid</p>");
+                //dspMessage.append("<p>" + objError.elementName + " is not valid</p>");
+                dspMessage.append($("<p></p>").text(objError.elementName + " is not valid"));
             });
             dspMessage.attr("style","color:red");
         }else
