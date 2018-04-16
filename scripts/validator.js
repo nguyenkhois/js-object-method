@@ -7,7 +7,6 @@ const FormValidator = {
         // spara undan en validator funktion med med ett givet namn.
         if (!this.validators[validatorName])
             this.validators[validatorName] = [];
-
         this.validators[validatorName].push(validatorFunction);
     },
 

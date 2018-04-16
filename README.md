@@ -1,4 +1,4 @@
-# JavaScript - Object method
+# JavaScript - Validators
 Example for using object method
 
 ## Versions
