@@ -15,8 +15,7 @@ $(document).ready(function(){
     const currentValidators = FormValidator.getValidators() || [];
     console.log("Current validators",currentValidators); //get all current validator names
 
-    //Create validator mapping
-    //(HTML elementId - VALIDATOR)
+    //Create validator mapping (HTML elementId - VALIDATOR)
     const mapping = new Map();
     mapping.set('productId','isNumber0OrBiggerThan0');
     mapping.set('productName','isStringNotNull');
@@ -24,8 +23,7 @@ $(document).ready(function(){
     mapping.set('stockStatus','isStringNotNull');
     FormValidator.prepare(mapping);
 
-    //Create data mapping
-    //(HTML elementId - Element name)
+    //Create data mapping (HTML elementId - Element name)
     const data = new Map();
     data.set('productId','Product Id');
     data.set('productName','Product name');
@@ -41,7 +39,6 @@ $(document).ready(function(){
         let error = FormValidator.validate(data);
         if (error.length > 0){
             error.forEach(objError=>{
-                //dspMessage.append("<p>" + objError.elementName + " is not valid</p>");
                 dspMessage.append($("<p></p>").text(objError.elementName + " is not valid"));
             });
             dspMessage.attr("style","color:red");
